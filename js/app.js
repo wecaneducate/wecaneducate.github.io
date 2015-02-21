@@ -1,5 +1,5 @@
-angular.module("sitenameApp", ["ngRoute","sitenameController"]).config(['$routeProvider',
-  function($routeProvider) {
+angular.module("sitenameApp", ["ngRoute","sitenameController"])
+  .config(['$routeProvider', function($routeProvider) {
     $routeProvider.
       when('/home', {
         templateUrl: 'partials/home.html',
@@ -24,5 +24,10 @@ angular.module("sitenameApp", ["ngRoute","sitenameController"]).config(['$routeP
       otherwise({
         redirectTo: '/home'
       });
-  }]);
+  }])
+  .controller("headerController", function($scope, $location) {
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+  });
 
